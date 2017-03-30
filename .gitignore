@@ -1,0 +1,21 @@
+# Created by https://www.gitignore.io/api/laravel
+
+### Laravel ###
+vendor/
+node_modules/
+npm-debug.log
+
+# Laravel 4 specific
+bootstrap/compiles.php
+app/storage/
+
+#Laravel 5 & Lumen specific
+/public/storage
+/public/hot
+/storage/*.key
+/.idea
+.env.*.php
+.env.php
+.env
+Homestead.json
+Homestead.yaml
