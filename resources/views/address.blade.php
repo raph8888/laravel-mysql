@@ -2,7 +2,10 @@
 
 @section('content')
 
-    <script type="text/javascript">
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBslZHQjMA_mDDSJoD8wKZTmwa_zCwJtF8&callback=initMap" type="text/javascript"> </script>
+
+    <script   type="text/javascript">
         function initialize() {
             var mapCanvas = document.getElementById('map-canvas');
             var mapOptions = {
