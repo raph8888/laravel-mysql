@@ -4,6 +4,8 @@ body {
     background-size: 50px 50px;
     background-repeat: repeat-x;
     font-family: 'Raleway';
+    margin: 0 0 100px; /* bottom = footer height */
+
 }
 
 button .fa {
@@ -332,4 +334,21 @@ div#calendar ul.dates li {
 
 div.clear {
     clear: both;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+.footer {
+    height: 80px;
+    text-align:center;
+    background: #6ba8de;
+    color: white;
+    padding-top: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }

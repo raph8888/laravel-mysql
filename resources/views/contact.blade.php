@@ -6,10 +6,12 @@
     <div class="login_main">
 
         <br>
+        <br>
 
         <h4><strong>Entre em contato ou venha nos visitar no centro da cidade. </strong></h4>
         <br>
 
+        <br>
         <div class="container">
 
             <div class="row text-center">
@@ -39,5 +41,7 @@
         </div>
 
     </div>
+
+    <br><br><br>
 
 @endsection

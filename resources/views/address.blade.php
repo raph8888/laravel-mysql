@@ -16,14 +16,6 @@
                          id="map-canvas"></div>
                 </div>
 
-                <div class="col-xs-12">
-                    <h2>Copiadora Montes Claros</h2>
-
-                    <p>Rua Coronel Altino de Freitas, 399<br>
-                        Montes Claros - MG, 39400-023, Brazil<br>
-                        (38) 3221-0798 / (38) 3213-5080</p>
-                </div>
-
             </div>
 
         </div>
