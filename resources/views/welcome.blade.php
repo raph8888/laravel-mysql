@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Andrzej Pawluzekinho: )))
+                    Main Page
                 </div>
 
                 <div class="links">
