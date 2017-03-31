@@ -24,4 +24,8 @@
 
     </body>
 
+    <br>
+
+    <br>
+
 @endsection

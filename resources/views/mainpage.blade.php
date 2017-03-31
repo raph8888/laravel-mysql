@@ -4,10 +4,15 @@
 
     <div class="login_main">
         <div class="container" style="margin-bottom: 20px;">
+
+            <br>
+
             <div class="row">
                 <h2 class="primeiro">Nos especializamos em:</h2>
             </div>
         </div>
+
+        <br>
 
         <div class="container">
 
@@ -81,5 +86,7 @@
         </div>
     </div>
 
+    <br>
+    <br>
 
 @endsection
