@@ -2,37 +2,7 @@
 
 @section('content')
 
-
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBslZHQjMA_mDDSJoD8wKZTmwa_zCwJtF8&callback=initMap" type="text/javascript"> </script>
-
-    <script   type="text/javascript">
-        function initialize() {
-            var mapCanvas = document.getElementById('map-canvas');
-            var mapOptions = {
-                center: new google.maps.LatLng(-16.7224000, -43.8656600),
-                zoom: 18,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            }
-            var map = new google.maps.Map(mapCanvas, mapOptions);
-
-            var iconBase = 'https://maps.google.com/mapfiles/kml/paddle/';
-
-            // Creating a marker and positioning it on the map
-            var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(-16.7223000, -43.8656600),
-                map: map,
-                icon: iconBase + 'blu-circle.png'
-            })
-
-        }
-        google.maps.event.addDomListener(window, 'load', initialize);
-
-    </script>
-
-
-
     <body onload="initialize()">
-
 
     <div class="login_main">
         <br><br>
@@ -59,5 +29,7 @@
         </div>
 
     </div>
+
+    </body>
 
 @endsection

@@ -37,82 +37,13 @@
 
     </style>
 
-    <script>
-        $(function () {
-            $('#task-name').focus();
-        });
-    </script>
-
-
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
     <!-- Latest compiled JavaScript -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-    <script>
-        $(function () {
-
-            /*  $(".first").hide();
-             $(".second").hide();
-             $(".third").hide();*/
-
-            $(".primeiro").hide();
-            $(".segundo").hide();
-            $(".terceiro").hide();
-            $(".quarto").hide();
-            $(".quinto").hide();
-            $(".sexto").hide();
-            $(".setimo").hide();
-            $(".oitavo").hide();
-            $(".nono").hide();
-
-            setTimeout(function () {
-                $(".primeiro").fadeIn(2000);
-            }, 300);
-
-            setTimeout(function () {
-                $(".segundo").fadeIn(2000);
-            }, 800);
-
-            setTimeout(function () {
-                $(".terceiro").fadeIn(2000);
-            }, 1300);
-
-            setTimeout(function () {
-                $(".quarto").fadeIn(2000);
-            }, 1800);
-
-            setTimeout(function () {
-                $(".quinto").fadeIn(2000);
-            }, 2300);
-
-            setTimeout(function () {
-                $(".sexto").fadeIn(2000);
-            }, 2800);
-
-            setTimeout(function () {
-                $(".setimo").fadeIn(2000);
-            }, 3300);
-
-            setTimeout(function () {
-                $(".oitavo").fadeIn(2000);
-            }, 3800);
-
-            setTimeout(function () {
-                $(".nono").fadeIn(2000);
-            }, 4300);
-        });
-    </script>
-
-    <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-    </script>
-
+    <script src="js/javascript.js"></script>
 
     <script src="https://maps.googleapis.com/maps/api/js"></script>
 
@@ -120,9 +51,7 @@
 
 <body>
 
-
 <div class="container">
-
 
     <div class="row">
         <div class="col-xs-12">

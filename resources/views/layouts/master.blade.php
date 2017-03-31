@@ -14,7 +14,9 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"
           type="text/css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
+    {{--<link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>--}}
+
+    {{--<script src='http://codepen.io/assets/libs/fullpage/jquery_and_jqueryui.js'></script>--}}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -22,73 +24,16 @@
 
     <link rel="shortcut icon" href="images/imageedit_3_2454083684.png" />
 
-
-    <script>
-        $(function () {
-            $('#task-name').focus();
-        });
-    </script>
-
-
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
     <!-- Latest compiled JavaScript -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-    <script>
-        $(function () {
-            $(".img-services").hide();
-            var img_services = [".segundo", ".terceiro", ".quarto", ".quinto", ".sexto", ".setimo", ".oitavo", ".nono"];
-            var x = 800;
-            var i = 0;
-
-            setTimeout(function () {
-                $(String(img_services[i])).fadeIn(2000);
-            }, x);
-            var x = x + 500;
-
-            setTimeout(function () {
-                $(String(img_services[i + 1])).fadeIn(2000);
-            }, x);
-            var x = x + 500;
-
-            setTimeout(function () {
-                $(String(img_services[i + 2])).fadeIn(2000);
-            }, x);
-            var x = x + 500;
-
-            setTimeout(function () {
-                $(String(img_services[i + 3])).fadeIn(2000);
-            }, x);
-            var x = x + 500;
-
-            setTimeout(function () {
-                $(String(img_services[i + 4])).fadeIn(2000);
-            }, x);
-            var x = x + 500;
-
-            setTimeout(function () {
-                $(String(img_services[i + 5])).fadeIn(2000);
-            }, x);
-            var x = x + 500;
-
-            setTimeout(function () {
-                $(String(img_services[i + 6])).fadeIn(2000);
-            }, x);
-            var x = x + 500;
-
-            setTimeout(function () {
-                $(String(img_services[i + 7])).fadeIn(2000);
-            }, x);
-            var x = x + 500;
-
-        });
-
-    </script>
+    <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBslZHQjMA_mDDSJoD8wKZTmwa_zCwJtF8&?sensor=true"> </script>
 
 
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src="js/javascript.js"></script>
 
 </head>
 
