@@ -15,10 +15,10 @@
 //    return view('welcome');
 //});
 
-Route::get('/', 'CopiadoraController@index');
-Route::get('contact', 'CopiadoraController@contact');
-Route::get('address', 'CopiadoraController@address');
-Route::match(['get', 'post'], 'access', 'CopiadoraController@access');
+Route::get('/', 'MainPageController@index');
+Route::get('contact', 'MainPageController@contact');
+Route::get('address', 'MainPageController@address');
+Route::match(['get', 'post'], 'access', 'MainPageController@access');
 
 
 
