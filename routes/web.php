@@ -15,10 +15,18 @@
 //    return view('welcome');
 //});
 
+
+//Routes calling MainPageController
+
 Route::get('/', 'MainPageController@index');
 Route::get('contact', 'MainPageController@contact');
 Route::get('address', 'MainPageController@address');
 Route::match(['get', 'post'], 'access', 'MainPageController@access');
+
+
+//Route calling StatusController
+
+Route::match(['get', 'post'], 'status', 'StatusController@status');
 
 
 
@@ -37,7 +45,6 @@ Route::match(['get', 'post'], 'access', 'MainPageController@access');
 //Route::get('hello', 'Hello@index');
 //Route::get('/hello/{name}', 'Hello@show');
 //Route::get('copiadora', 'CopiadoraController@index');
-//Route::match(['get', 'post'], 'status', 'CopiadoraController@status');
 //Route::match(['get', 'post'], 'inserirentrada', 'CopiadoraController@inserirentrada');
 //Route::match(['get', 'post'], 'inserirsaida', 'CopiadoraController@inserirsaida');
 //Route::match(['get', 'post'], 'administrador', 'CopiadoraController@administrador');

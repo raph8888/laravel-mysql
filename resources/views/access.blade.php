@@ -13,7 +13,7 @@
 
             <h1><small><div id="show_date"></div></small></h1><br>
 
-            <form action={{ $path }}/acesso method="post" enctype="multipart/form-data">
+            <form action={{ $path }}/access method="post" enctype="multipart/form-data">
 
                 <input type="text" name="user" placeholder="Nome" required>
                 <input type="password" name="pass" placeholder="Senha" required>

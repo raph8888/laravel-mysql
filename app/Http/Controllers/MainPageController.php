@@ -1,13 +1,17 @@
 <?php
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use View;
+use DB;
+use Session;
 
 class MainPageController extends Controller
 {
 
-    public function __construct() {
-        View::share ( 'path', url('/') );
+    public function __construct()
+    {
+        View::share('path', url('/'));
     }
 
     /**
@@ -35,7 +39,9 @@ class MainPageController extends Controller
     }
 
     /**
-     * Display acesso view.
+     * Authenticates user
+     * Takes care of the logic of adding the date if it's first login of the day.
+     * Display access view.
      */
     public function access()
     {
@@ -51,30 +57,27 @@ class MainPageController extends Controller
 
                 Session::put('user', $myusername);
 
-                $checkdate = DB::select('SELECT * FROM ControleCaixa WHERE Data="' . $this->diadehoje() . '"');
+                $checkdate = DB::select('SELECT * FROM ControleCaixa WHERE Data="' . Helpers::diadehoje() . '"');
 
                 if (count($checkdate) === 1) {
 
-                    return $this->status();
+                    return redirect('status');
 
                 } else {
 
-                    //!! Muito Importante -- Inserting date into database !!//
+                    DB::select('INSERT INTO ControleCaixa (Data) VALUES ("' . Helpers::diadehoje() . '")');
 
-                    $checkdate = DB::select('INSERT INTO ControleCaixa (Data)
-                VALUES ("' . $this->diadehoje() . '")');
-
-                    return $this->status();
+                    return redirect('status');
                 }
 
             } else {
 
-                return view('acesso', ['situation' => 'Dados de Acesso incorretos.']);
+                return view('access', ['situation' => 'Dados de Acesso incorretos.']);
             }
+
         } else {
 
             return view('access');
         }
     }
-
 }
