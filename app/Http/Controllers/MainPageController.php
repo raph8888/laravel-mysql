@@ -20,7 +20,7 @@ class MainPageController extends Controller
      */
     public function index(Request $request)
     {
-        return view('mainpage');
+        return view('services');
     }
 
     /**
