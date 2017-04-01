@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\ControleCaixa;
 use Illuminate\Http\Request;
 use View;
 use DB;
@@ -48,36 +49,37 @@ class MainPageController extends Controller
 
         if (isset($_POST['user']) && isset($_POST['pass'])) {
 
-            $myusername = $_REQUEST['user'];
-            $mypassword = $_REQUEST['pass'];
+            $username = $_REQUEST['user'];
+            $password = $_REQUEST['pass'];
 
-            $users = DB::select("SELECT * FROM Acesso WHERE Nome='$myusername' and Senha='$mypassword'");
+            $user = DB::table('Acesso')->where('Nome', $username)->where('Senha', $password)->first();
 
-            if (count($users) === 1) {
+            if ($user) {
 
-                Session::put('user', $myusername);
+                Session::put('user', $username);
 
-                $checkdate = DB::select('SELECT * FROM ControleCaixa WHERE Data="' . Helpers::diadehoje() . '"');
+                $day_has_row = DB::table('ControleCaixa')->where('Data', Helpers::diadehoje())->first();
 
-                if (count($checkdate) === 1) {
+                if (!$day_has_row) {
 
-                    return redirect('status');
+                    $new_day = new ControleCaixa;
+                    $new_day->Data = Helpers::diadehoje();
+                    $new_day->save();
 
-                } else {
-
-                    DB::select('INSERT INTO ControleCaixa (Data) VALUES ("' . Helpers::diadehoje() . '")');
-
-                    return redirect('status');
                 }
+
+                return redirect('status');
 
             } else {
 
                 return view('access', ['situation' => 'Dados de Acesso incorretos.']);
+
             }
 
         } else {
 
             return view('access');
+
         }
     }
 }

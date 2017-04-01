@@ -43,6 +43,4 @@ class CopiadoraController extends Controller
 //
 //    }
 
-    //Clear Sessions
-
 }
