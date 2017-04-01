@@ -61,8 +61,9 @@
                             <?php if($acesso->UserAdmin == 1){echo 'o';} else {echo '-';} ?> </td>
 
 
+
                         <td align='middle'>
-                            <a href='http://copiadoramoc.com/public/excluir/<?php echo $acesso->Nome ?>' title='Excluir <?php echo $acesso->Nome ?> da Tabela de Acesso' id='<?php echo $acesso->Nome ?>' class='delete' style='color: red'>x</a>
+                            <a href='{{ url('/') }}/excluir/<?php echo $acesso->Nome ?>' title='Excluir <?php echo $acesso->Nome ?> da Tabela de Acesso' id='<?php echo $acesso->Nome ?>' class='delete' style='color: red'>x</a>
                         </td>
                     </tr>
 
@@ -72,7 +73,7 @@
                 </table>
 
                 <br>
-                <a href="http://copiadoramoc.com/public/adicionar" title="Adicionar Acessos"><button>Adicionar Acesso (+)</button></a>
+                <a href=" {{ url('/adicionar') }}" title="Adicionar Acessos"><button>Adicionar Acesso (+)</button></a>
 
             </div>
 
@@ -128,9 +129,9 @@
         <div class="row">
             <div class="col-md-4">
 
-                <a href='http://copiadoramoc.com/public/alldays'><p>  Lista completa de Abertura e Fechamento do Caixa </p> </a>
+                <a href= {{ url('/alldays') }}><p>  Lista completa de Abertura e Fechamento do Caixa </p> </a>
 
-                <a href="http://copiadoramoc.com/public/allcosts"><p>   Lista completa de Custos </p> </a>
+                <a href= {{ url('/allcosts') }}><p>   Lista completa de Custos </p> </a>
             </div>
 
         </div>
@@ -145,7 +146,7 @@
         $( "li" ).click(function() {
             var date = $(this).attr("id");
             $.ajax({
-                url : '{{("http://copiadoramoc.com/public/administrador/check")}}',
+                url : '{{ url('/administrador/check') }}',
                 type: "POST",
                 data: {name : date,
                     '_token': '{!! csrf_token() !!}'},

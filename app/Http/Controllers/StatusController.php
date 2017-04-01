@@ -147,7 +147,7 @@ class StatusController extends Controller
 
             if ($admin === 1) {
 
-                $greeting = '<a href="http://copiadoramoc.com/public/administrador">Clique aqui para Analisar Tabelas</a>';
+                $greeting = '<a href=' . url('/admin') . '>Clique aqui para Analisar Tabelas</a>';
 
             } else {
 
@@ -164,4 +164,34 @@ class StatusController extends Controller
 
         }
     }
+
+
+    //Adicionar Custos
+
+    public function custos()
+    {
+
+        if (!empty($_POST['custo']) && !empty($_POST['value'])) {
+
+            $data = Helpers::diadehoje();
+            $newcost = $_REQUEST['custo'];
+            $newvalue = $_REQUEST['value'];
+            $user = new Custos;
+
+            $user->Date = $data;
+
+            $user->Description = $newcost;
+
+            $user->Value = $newvalue;
+
+            $user->save();
+        } else {
+
+            $resultado = "Nenhum valor de custo inserido.";
+            return $resultado;
+        }
+    }
+
+
+
 }

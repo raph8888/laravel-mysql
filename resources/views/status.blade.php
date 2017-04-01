@@ -113,7 +113,7 @@
             var custo = $('input#newcost').val();
             var value = $('input#newvalue').val();
             $.ajax({
-                url: '{{("http://copiadoramoc.com/public/custos")}}',
+                url: '{{ url('/custos') }}',
                 type: "POST",
                 data: {
                     custo: custo,

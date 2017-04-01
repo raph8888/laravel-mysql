@@ -7,7 +7,7 @@
 
     <div class='text-center'>
 
-        <form action="/public/adicionar" method="post" enctype="multipart/form-data">
+        <form action={{ $path }}/adicionar method="post" enctype="multipart/form-data">
 
             <input type="text" name="newuser" placeholder="Novo Acesso" required>
 
