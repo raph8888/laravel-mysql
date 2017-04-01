@@ -50,3 +50,6 @@ Route::match(['get', 'post'], 'access', 'MainPageController@access');
 //Route::get('/flush', 'CopiadoraController@sair');
 //Route::get('/allcosts', 'CopiadoraController@allcosts');
 //Route::get('/alldays', 'CopiadoraController@alldays');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
