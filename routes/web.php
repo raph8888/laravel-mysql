@@ -64,7 +64,7 @@ Route::get('/editar/{name}', 'AdminController@edit');
 //Route::get('copiadora', 'CopiadoraController@index');
 //Route::get('/mensagem', 'CopiadoraController@errors');
 
-Route::get('/flush', 'CopiadoraController@sair');
+Route::get('/flush', 'GeneralController@sair');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

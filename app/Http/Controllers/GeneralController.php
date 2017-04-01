@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 use View;
 
-class CopiadoraController extends Controller
+class GeneralController extends Controller
 {
 
     public function __construct() {
