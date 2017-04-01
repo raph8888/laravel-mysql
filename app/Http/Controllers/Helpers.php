@@ -9,12 +9,6 @@ use App\Acesso;
 class Helpers extends Controller
 {
 
-    public function __construct()
-    {
-        View::share('path', url('/'));
-    }
-
-
     static function diadehoje()
     {
 
@@ -60,8 +54,6 @@ class Helpers extends Controller
             return $admin;
 
         }
-
-
     }
 
 }

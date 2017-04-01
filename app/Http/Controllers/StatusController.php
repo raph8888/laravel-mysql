@@ -50,14 +50,14 @@ class StatusController extends Controller
         <td>
             <div class="abertura">
                 <p style="color: #ff0000">Abertura do Caixa Pendente<br>
-                    <a href="http://copiadoramoc.com/public/inserirentrada">Executar Abertura</a></p>
+                    <a href=' . url('/inserirentrada') . '>Executar Abertura</a></p>
             </div>
         </td>
         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
         <td>
             <div class="fechamento">
                 <p style="color: #ff0000">Fechamento do Caixa Pendente<br>
-                    <a href="http://copiadoramoc.com/public/inserirsaida">Executar Fechamento</a></p>
+                    <a href=' . url('/inserirsaida') . '>Executar Fechamento</a></p>
             </div>
         </td>
         </tr>
@@ -80,7 +80,7 @@ class StatusController extends Controller
         <td>
             <div class="fechamento">
                 <p style="color: #ff0000">Fechamento do Caixa Pendente<br>
-                    <a href="http://copiadoramoc.com/public/inserirsaida">Executar Fechamento</a></p>
+                    <a href=' . url('/inserirsaida') . '>Executar Fechamento</a></p>
             </div>
         </td>
         </tr>

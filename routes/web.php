@@ -29,6 +29,11 @@ Route::match(['get', 'post'], 'access', 'MainPageController@access');
 Route::match(['get', 'post'], 'status', 'StatusController@status');
 
 
+//Routes calling CashierInsertController
+
+Route::match(['get', 'post'], 'inserirentrada', 'CashierInsertController@inserirentrada');
+Route::match(['get', 'post'], 'inserirsaida', 'CashierInsertController@inserirsaida');
+
 
 //Route::get('home', 'HomeController@index');
 //Route::controllers([
@@ -45,8 +50,6 @@ Route::match(['get', 'post'], 'status', 'StatusController@status');
 //Route::get('hello', 'Hello@index');
 //Route::get('/hello/{name}', 'Hello@show');
 //Route::get('copiadora', 'CopiadoraController@index');
-//Route::match(['get', 'post'], 'inserirentrada', 'CopiadoraController@inserirentrada');
-//Route::match(['get', 'post'], 'inserirsaida', 'CopiadoraController@inserirsaida');
 //Route::match(['get', 'post'], 'administrador', 'CopiadoraController@administrador');
 //Route::match(['get', 'post'], '/administrador/check', 'CopiadoraController@viewday');
 //Route::match(['get', 'post'], '/adicionar', 'CopiadoraController@create');
@@ -54,7 +57,7 @@ Route::match(['get', 'post'], 'status', 'StatusController@status');
 //Route::get('/excluir/{name}', 'CopiadoraController@destroy');
 //Route::get('/editar/{name}', 'CopiadoraController@edit');
 //Route::get('/mensagem', 'CopiadoraController@errors');
-//Route::get('/flush', 'CopiadoraController@sair');
+Route::get('/flush', 'CopiadoraController@sair');
 //Route::get('/allcosts', 'CopiadoraController@allcosts');
 //Route::get('/alldays', 'CopiadoraController@alldays');
 Auth::routes();

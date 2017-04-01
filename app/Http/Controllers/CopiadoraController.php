@@ -511,15 +511,14 @@ class CopiadoraController extends Controller
 //        }
 //    }
 //
-//    //Clear Sessions
-//
-//    public function sair()
-//    {
-//
-//        Session::flush();
-//        return view('copiadora');
-//
-//    }
+    //Clear Sessions
+
+    public function sair()
+    {
+        Session::flush();
+        return view('copiadora');
+
+    }
 //
 //    public function allcosts()
 //    {

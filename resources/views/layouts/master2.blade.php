@@ -20,7 +20,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <?php $dayid = "li-" . date('d-m-Y'); ?>
     <style>
 
@@ -55,7 +55,7 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <a href="http://copiadoramoc.com/public/flush" title="Sair da Área Administrativa"><p
+            <a href={{ url('/') }}><p
                         style="float:right; padding-right: 20px; padding-top: 20px;">Sair da Área Administrativa</p>
             </a>
         </div>
@@ -67,11 +67,11 @@
             <img src="images/Untitled.png" style="width: 100%; max-width: 180px;">
         </div>
         <div class="col-xs-12 col-md-8 text-center">
-            <a href="http://copiadoramoc.com/public/" align="center"
+            <a href= {{ url('/') }} align="center"
                style="text-decoration: none; color: #5196D5;">
                 <h1>Copiadora Montes Claros</h1>
             </a>
-            <a href="http://copiadoramoc.com/public/status"><h2>Área Administrativa</h2></a>
+            <a href= {{ url('/status') }}><h2>Área Administrativa</h2></a>
 
         </div>
         <div class="hidden-xs col-md-2">
