@@ -2,8 +2,6 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use View;
-use Illuminate\Support\Facades\Log;
-
 
 use DB;
 use App\Acesso;
@@ -86,8 +84,6 @@ class CashierInsertController extends Controller
                         ));
 
                         $result = curl_exec($ch);
-
-                        Log::info($result);
 
                         curl_close($ch);
 
@@ -179,8 +175,6 @@ class CashierInsertController extends Controller
                         ));
 
                         $result = curl_exec($ch);
-
-                        Log::info($result);
 
                         return redirect('/status');
                     } else {
