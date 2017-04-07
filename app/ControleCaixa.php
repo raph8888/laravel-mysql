@@ -11,6 +11,4 @@ class ControleCaixa extends Model
 
     public $primaryKey = 'IDda';
 
-    public $timestamps = false;
-
 }
