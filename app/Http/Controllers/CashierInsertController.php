@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use View;
+use Illuminate\Support\Facades\Log;
+
 
 use DB;
 use App\Acesso;
@@ -55,7 +57,7 @@ class CashierInsertController extends Controller
 
                         $message = "O Caixa foi aberto hoje as " . $horas . " por " . $user1 . " e " . $user2 . " Valor do Caixa no momento de abertura: R$ " . $valorentrada;
 
-                        $authToken = "4ZnXsl.LcQrDl4ZHWBt6_J1KLqNZVV7Tfg9KK25nd1EYaQ7SPP2mmLkODKhzJ1S";
+                        $authToken = "7Za3W2ZlRhiLywZraszuIw==";
 
 
                         $ch = curl_init();
@@ -85,11 +87,7 @@ class CashierInsertController extends Controller
 
                         $result = curl_exec($ch);
 
-//                        if ($result === false) {
-//                            $lastError = curl_error($ch);
-//                        }
-//
-//                        $curlInfo = curl_getinfo($ch);
+                        Log::info($result);
 
                         curl_close($ch);
 
@@ -154,7 +152,7 @@ class CashierInsertController extends Controller
 
                         $message = "O Caixa foi fechado hoje as " . $horas . " por " . $user1 . " e " . $user2 . " Valor do Caixa no momento de fechamento: R$ " . $valorsaida;
 
-                        $authToken = "4ZnXsl.LcQrDl4ZHWBt6_J1KLqNZVV7Tfg9KK25nd1EYaQ7SPP2mmLkODKhzJ1S";
+                        $authToken = "7Za3W2ZlRhiLywZraszuIw==";
 
 
                         $ch = curl_init();
@@ -181,6 +179,8 @@ class CashierInsertController extends Controller
                         ));
 
                         $result = curl_exec($ch);
+
+                        Log::info($result);
 
                         return redirect('/status');
                     } else {
