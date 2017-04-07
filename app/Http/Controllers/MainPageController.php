@@ -12,6 +12,32 @@ class MainPageController extends Controller
 
     public function __construct()
     {
+        $controle = ControleCaixa::orderBy('IDda', 'desc')->get();
+
+        foreach ($controle as $cont) {
+
+            $table_date = str_replace("/","-",$cont->Data);
+            $timestamp = strtotime(str_replace("/","-",$cont->Data));
+
+
+            echo $table_date;
+            echo '<br>';
+            echo $timestamp;
+            echo '<br>';
+            echo $cont->IDda;
+
+            echo '<br>';
+            echo '<br>';
+
+            $flight = ControleCaixa::find($cont->IDda);
+
+            $flight->created_at = $timestamp;
+
+            $flight->save();
+
+
+        }
+
         View::share('path', url('/'));
     }
 
