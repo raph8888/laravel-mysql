@@ -51,41 +51,41 @@ class CashierInsertController extends Controller
                     if (count($sql) === 1) {
                         $sql = DB::select('UPDATE ControleCaixa SET Entrada1="' . $user1 . '", Entrada2="' . $user2 . '", ValorEntrada="' . $valorentrada . '", timeEntrada="' . $horas . '", StatusEntrada = "1" WHERE Data ="' . Helpers::diadehoje() . '"');
 
-                        $to = "[\"+5538991926473\"]";
-
-                        $message = "O Caixa foi aberto hoje as " . $horas . " por " . $user1 . " e " . $user2 . " Valor do Caixa no momento de abertura: R$ " . $valorentrada;
-
-                        $authToken = "7Za3W2ZlRhiLywZraszuIw==";
-
-
-                        $ch = curl_init();
-
-
-                        curl_setopt($ch, CURLOPT_URL, "https://api.clickatell.com/rest/message");
-
-                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-                        curl_setopt($ch, CURLOPT_POST, 1);
-
-                        curl_setopt($ch, CURLOPT_VERBOSE, 1);
-
-                        curl_setopt($ch, CURLOPT_POSTFIELDS, "{\"text\":\"$message\",\"to\":$to}");
-
-                        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-
-                            "X-Version: 1",
-
-                            "Content-Type: application/json",
-
-                            "Accept: application/json",
-
-                            "Authorization: Bearer $authToken"
-
-                        ));
-
-                        $result = curl_exec($ch);
-
-                        curl_close($ch);
+//                        $to = "[\"+5538991926473\"]";
+//
+//                        $message = "O Caixa foi aberto hoje as " . $horas . " por " . $user1 . " e " . $user2 . " Valor do Caixa no momento de abertura: R$ " . $valorentrada;
+//
+//                        $authToken = "7Za3W2ZlRhiLywZraszuIw==";
+//
+//
+//                        $ch = curl_init();
+//
+//
+//                        curl_setopt($ch, CURLOPT_URL, "https://api.clickatell.com/rest/message");
+//
+//                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+//
+//                        curl_setopt($ch, CURLOPT_POST, 1);
+//
+//                        curl_setopt($ch, CURLOPT_VERBOSE, 1);
+//
+//                        curl_setopt($ch, CURLOPT_POSTFIELDS, "{\"text\":\"$message\",\"to\":$to}");
+//
+//                        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+//
+//                            "X-Version: 1",
+//
+//                            "Content-Type: application/json",
+//
+//                            "Accept: application/json",
+//
+//                            "Authorization: Bearer $authToken"
+//
+//                        ));
+//
+//                        $result = curl_exec($ch);
+//
+//                        curl_close($ch);
 
                         return redirect('/status');
 
