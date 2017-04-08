@@ -15,6 +15,13 @@ class ControleCaixa extends Model
 
     protected $table = 'ControleCaixa';
 
+
+    /**
+     * Doing this because primary key is not id. Dumbass.
+     *
+    */
+    public $primaryKey = 'IDda';
+
     /**
      * Indicates if the model should be timestamped.
      *
@@ -22,10 +29,4 @@ class ControleCaixa extends Model
      */
     public $timestamps = false;
 
-    // Now declare the relationship with "occasion_categories" table
-    public function occasionCategory()
-    {
-        // Make sure you have used occasion_categories_id as the foreugn key
-        return $this->belongsTo('OccasionCategory', 'occasion_categories_id', 'id');
-    }
 }

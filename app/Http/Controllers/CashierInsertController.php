@@ -1,55 +1,53 @@
 <?php
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use View;
-
 use DB;
 use App\Acesso;
 use App\ControleCaixa;
 use App\Custos;
-//use Illuminate\Http\Request;
-//use App\Http\Requests;
-//use App\Http\Controllers\Controller;
-//use App\Clickatell;
-//use App\Clickatell\TransportInterface;
-
 use Session;
 
 class CashierInsertController extends Controller
 {
 
-    public function __construct() {
-        View::share ( 'path', url('/') );
+    public function __construct()
+    {
+        View::share('path', url('/'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
     public function inserirentrada()
     {
 
-        $checkdate = DB::select('SELECT * FROM ControleCaixa WHERE Data="' . Helpers::diadehoje() . '" AND StatusEntrada=0');
+        $status_open_day = ControleCaixa::where('Data', Helpers::diadehoje())->where('StatusEntrada', 0)->first();
 
-        if (count($checkdate) === 1) {
+        if ($status_open_day) {
+
             date_default_timezone_set("Brazil/East");
+
             if (isset($_POST['user1']) && isset($_POST['pass1']) && isset($_POST['valorentrada'])) {
+
                 $user1 = $_REQUEST['user1'];
-                $pass1 = $_REQUEST['pass1'];
                 $user2 = $_REQUEST['user2'];
+                $pass1 = $_REQUEST['pass1'];
                 $pass2 = $_REQUEST['pass2'];
                 $valorentrada = $_REQUEST['valorentrada'];
                 $horas = date("h:i:sa");
 
-                $sql = DB::select('SELECT * FROM Acesso WHERE Nome="' . $user1 . '" AND Senha="' . $pass1 . '"');
+                $first_access = Acesso::where('Nome', $user1)->where('Senha', $pass1)->first();
+                $second_access = Acesso::where('Nome', $user2)->where('Senha', $pass2)->first();
 
-                if (count($sql) === 1) {
+                if ($first_access && $second_access) {
 
-                    $sql = DB::select('SELECT * FROM Acesso WHERE Nome="' . $user2 . '" AND Senha="' . $pass2 . '"');
+                    $status_open_day->Entrada1 = $user1;
+                    $status_open_day->Entrada2 = $user2;
+                    $status_open_day->ValorEntrada = $valorentrada;
+                    $status_open_day->timeEntrada = $horas;
+                    $status_open_day->StatusEntrada = 1;
 
-                    if (count($sql) === 1) {
-                        $sql = DB::select('UPDATE ControleCaixa SET Entrada1="' . $user1 . '", Entrada2="' . $user2 . '", ValorEntrada="' . $valorentrada . '", timeEntrada="' . $horas . '", StatusEntrada = "1" WHERE Data ="' . Helpers::diadehoje() . '"');
+                    $status_open_day->save();
+
 
 //                        $to = "[\"+5538991926473\"]";
 //
@@ -87,19 +85,13 @@ class CashierInsertController extends Controller
 //
 //                        curl_close($ch);
 
-                        return redirect('/status');
+                    return redirect('/status');
 
-                    } else {
-
-                        echo "Nome2 ou Senha2 de Acesso Incorretos.";
-                        return view('inserirentrada');
-                    }
                 } else {
 
-                    echo "Nome1 ou Senha1 de Acesso Incorretos.";
+                    echo "Nome ou Senha de Acesso Incorretos.";
                     return view('inserirentrada');
                 }
-
 
             } else {
                 return view('inserirentrada');
@@ -115,17 +107,13 @@ class CashierInsertController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
+
     public function inserirsaida()
     {
 
-        $checkdate = DB::select('SELECT * FROM ControleCaixa WHERE Data="' . Helpers::diadehoje() . '" AND StatusSaida=0');
+        $status_close_day = ControleCaixa::where('Data', Helpers::diadehoje())->where('StatusSaida', 0)->first();
 
-        if (count($checkdate) === 1) {
+        if ($status_close_day) {
             date_default_timezone_set("Brazil/East");
             if (isset($_POST['user1']) && isset($_POST['pass1']) && isset($_POST['valorsaida'])) {
                 $user1 = $_REQUEST['user1'];
@@ -135,14 +123,18 @@ class CashierInsertController extends Controller
                 $valorsaida = $_REQUEST['valorsaida'];
                 $horas = date("h:i:sa");
 
-                $sql = DB::select('SELECT * FROM Acesso WHERE Nome="' . $user1 . '" AND Senha="' . $pass1 . '"');
+                $first_access = Acesso::where('Nome', $user1)->where('Senha', $pass1)->first();
+                $second_access = Acesso::where('Nome', $user2)->where('Senha', $pass2)->first();
 
-                if (count($sql) === 1) {
+                if ($first_access && $second_access) {
 
-                    $sql = DB::select('SELECT * FROM Acesso WHERE Nome="' . $user2 . '" AND Senha="' . $pass2 . '"');
+                    $status_close_day->Saida1 = $user1;
+                    $status_close_day->Saida2 = $user2;
+                    $status_close_day->ValorSaida = $valorsaida;
+                    $status_close_day->timeSaida = $horas;
+                    $status_close_day->StatusSaida = 1;
 
-                    if (count($sql) === 1) {
-                        $sql = DB::select('UPDATE ControleCaixa SET Saida1="' . $user1 . '", Saida2="' . $user2 . '", ValorSaida="' . $valorsaida . '", timeSaida="' . $horas . '", StatusSaida = "1" WHERE Data ="' . Helpers::diadehoje() . '"');
+                    $status_close_day->save();
 
 //                        $to = "[\"+5538991926473\"]";
 //
@@ -176,15 +168,11 @@ class CashierInsertController extends Controller
 //
 //                        $result = curl_exec($ch);
 
-                        return redirect('/status');
-                    } else {
+                    return redirect('/status');
 
-                        echo "Nome2 ou Senha2 de Acesso Incorretos.";
-                        return view('inserirsaida');
-                    }
                 } else {
 
-                    echo "Nome1 ou Senha1 de Acesso Incorretos.";
+                    echo "Nome ou Senha de Acesso Incorretos.";
                     return view('inserirsaida');
                 }
 
@@ -198,8 +186,6 @@ class CashierInsertController extends Controller
             return view('errors',
                 ['mensagem' => $mensagem]);
 
-
         }
     }
-
 }

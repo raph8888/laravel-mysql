@@ -14,6 +14,13 @@ class Acesso extends Model
 
     protected $table = 'Acesso';
 
+
+    /**
+     * Doing this because primary key is not id. Dumbass.
+     *
+     */
+    public $primaryKey = 'ID';
+
     /**
      * Indicates if the model should be timestamped.
      *
