@@ -64,6 +64,8 @@ class MainPageController extends Controller
 
                     $new_day = new ControleCaixa;
                     $new_day->Data = Helpers::diadehoje();
+                    $new_day->created_at = time();
+
                     $new_day->save();
 
                 }
