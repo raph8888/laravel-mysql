@@ -14,8 +14,7 @@
             <br>
             <br>
 
-            <div style="font-size: 25px;">    {!! isset($status) ? $status : null !!}    </div>
-
+            <div style="font-size: 25px;">    @include($status)  </div>
 
         </div>
 

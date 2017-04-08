@@ -44,92 +44,26 @@ class StatusController extends Controller
 
             if ($statusentrada[0] === 0 && $statussaida[0] === 0) {
 
-                $status = '
-        <table align="center">
-        <tr>
-        <td>
-            <div class="abertura">
-                <p style="color: #ff0000">Abertura do Caixa Pendente<br>
-                    <a href=' . url('/inserirentrada') . '>Executar Abertura</a></p>
-            </div>
-        </td>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        <td>
-            <div class="fechamento">
-                <p style="color: #ff0000">Fechamento do Caixa Pendente<br>
-                    <a href=' . url('/inserirsaida') . '>Executar Fechamento</a></p>
-            </div>
-        </td>
-        </tr>
-        </table> ';
+                $status = 'status/status_open_close';
 
             } else {
 
                 if ($statusentrada[0] === 1 && $statussaida[0] === 0) {
 
-                    $status = '
-
-        <table align="center">
-        <tr>
-        <td>
-            <div class="abertura">
-                <p style="color: #33CC33">Abertura do Caixa Executada<br>Obrigado</p>
-            </div>
-        </td>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        <td>
-            <div class="fechamento">
-                <p style="color: #ff0000">Fechamento do Caixa Pendente<br>
-                    <a href=' . url('/inserirsaida') . '>Executar Fechamento</a></p>
-            </div>
-        </td>
-        </tr>
-        </table> ';
-
+                    $status = 'status/status_close';
 
                 } else {
 
                     if ($statusentrada[0] === 1 && $statussaida[0] === 1) {
 
-                        $status = '
+                        $status = 'status/status_finished';
 
-             <table align="center">
-        <tr>
-        <td>
-            <div class="abertura">
-                <p style="color: #33CC33">Abertura do Caixa Executada<br>Obrigado</p>
-            </div>
-        </td>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        <td>
-            <div class="fechamento">
-                <p style="color: #33CC33">Fechamento do Caixa Executado<br>Obrigado</p>
-            </div>
-        </td>
-        </tr>
-        </table> ';
 
                     } else {
 
                         if ($statusentrada[0] === 0 && $statussaida[0] === 1) {
 
-                            $status = '
-
-        <table align="center">
-        <tr>
-        <td>
-            <div class="abertura">
-                <p style="color: #ff0000">Abertura do Caixa Bloqueada<br></p>
-            </div>
-        </td>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        <td>
-            <div class="fechamento">
-                <p style="color: #33CC33">Fechamento do Caixa Executado<br>Obrigado</p>
-            </div>
-        </td>
-        </tr>
-        </table> ';
+                            $status = 'status/status_open_blocked';
 
                         } else {
                             $status = 'Algo errado aconteceu, contate Rapha';
@@ -191,7 +125,6 @@ class StatusController extends Controller
             return $resultado;
         }
     }
-
 
 
 }
