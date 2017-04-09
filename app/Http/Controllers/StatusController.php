@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use View;
 use DB;
 use App\Custos;
+use App\ControleCaixa;
 use Session;
 
 class StatusController extends Controller
@@ -28,52 +29,22 @@ class StatusController extends Controller
 
         } else {
 
-            $hr = date(" H ");
-            if ($hr >= 12 && $hr < 18) {
-                $resp = "Boa tarde";
-
-            } else if ($hr >= 0 && $hr < 12) {
-                $resp = "Bom dia";
-
-            } else {
-                $resp = "Boa noite";
-            }
-
-            $statusentrada = DB::table('ControleCaixa')->where('Data', Helpers::diadehoje())->pluck('StatusEntrada');
-            $statussaida = DB::table('ControleCaixa')->where('Data', Helpers::diadehoje())->pluck('StatusSaida');
-
-            if ($statusentrada[0] === 0 && $statussaida[0] === 0) {
-
-                $status = 'status/status_open_close';
-
-            } else {
-
-                if ($statusentrada[0] === 1 && $statussaida[0] === 0) {
-
-                    $status = 'status/status_close';
-
-                } else {
-
-                    if ($statusentrada[0] === 1 && $statussaida[0] === 1) {
-
-                        $status = 'status/status_finished';
+            $status_day = ControleCaixa::where('Data', Helpers::diadehoje())->first();
+            $status_day_open = $status_day->StatusEntrada;
+            $status_day_close = $status_day->StatusSaida;
+            $status_today = Helpers::return_status($status_day_open, $status_day_close);
+            $status_day->status_today = $status_today;
 
 
-                    } else {
-
-                        if ($statusentrada[0] === 0 && $statussaida[0] === 1) {
-
-                            $status = 'status/status_open_blocked';
-
-                        } else {
-                            $status = 'Algo errado aconteceu, contate Rapha';
-                        }
-                    }
-                }
-            }
+            $previous_id = ControleCaixa::where('IDda', '<', $status_day->IDda)->max('IDda');
+            $previous_day = ControleCaixa::where('IDda', $previous_id)->first();
+            $status_yesterday_open = $previous_day->StatusEntrada;
+            $status_yesterday_close = $previous_day->StatusSaida;
+            $status_yesterday = Helpers::return_status($status_yesterday_open, $status_yesterday_close);
+            $previous_day->status_yesterday = $status_yesterday;
 
             ////Display list of costs
-            $custos = Custos::where('Date', '=', Helpers::diadehoje())->get();
+            $custos = Custos::where('Date', Helpers::diadehoje())->get();
 
             $myusername = Session::get('user');
 
@@ -91,9 +62,10 @@ class StatusController extends Controller
             return view('status',
 
                 ['data' => Helpers::diadehoje(),
-                    'situation' => $resp . ' ' . $myusername . ',',
+                    'situation' => Helpers::greeting() . ' ' . $myusername . ': )',
                     'greeting' => $greeting,
-                    'status' => $status,
+                    'status_day' => $status_day,
+                    'status_yesterday' => $previous_day,
                     'custos' => $custos]);
 
         }

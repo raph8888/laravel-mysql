@@ -56,4 +56,47 @@ class Helpers extends Controller
         }
     }
 
+    static function greeting()
+    {
+        $hr = date(" H ");
+        if ($hr >= 12 && $hr < 18) {
+            $resp = "Boa tarde";
+
+        } else if ($hr >= 0 && $hr < 12) {
+            $resp = "Bom dia";
+
+        } else {
+            $resp = "Boa noite";
+        }
+
+        return $resp;
+    }
+
+    static function return_status($status_day_open, $status_day_close)
+    {
+        if (!$status_day_open && !$status_day_close) {
+
+            $status = 'status/status_open_close';
+
+        } elseif ($status_day_open && !$status_day_close) {
+
+            $status = 'status/status_close';
+
+        } elseif ($status_day_open && $status_day_close) {
+
+            $status = 'status/status_finished';
+
+        } elseif (!$status_day_open && $status_day_close) {
+
+            $status = 'status/status_open_blocked';
+
+        } else {
+
+            $status = 'Algo errado aconteceu, contate Rapha';
+
+        }
+
+        return $status;
+    }
+
 }
