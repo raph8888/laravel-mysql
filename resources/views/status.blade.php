@@ -11,7 +11,7 @@
             <br>
 
             <div class="row">
-                <div class="container">
+                <div class="container status_container">
 
                     <div class=" hidden-xs hidden-sm col-md-3 text-center" style="color: grey;">
                         <h3>{{ $status_yesterday->Data }}</h3>
