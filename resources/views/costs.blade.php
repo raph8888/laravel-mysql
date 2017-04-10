@@ -9,7 +9,7 @@
     left: 0px;">
 
             <h3>Despesas do dia</h3>
-            <table class="cost-table" style="width:100%">
+            <table align="left" class="cost-table" style="width:100%">
                 <thead align="left" style="display: table-header-group">
                 <tr>
                     <th>Descrição</th>
@@ -23,7 +23,7 @@
                 if ($custos) {
                     foreach ($custos as $custo) {
 
-                        echo "<tr class='item_row'>";
+                        echo "<tr align='left' class='item_row'>";
 
                         echo "<td> " . $custo['Description'] . " </td>
                 <td><p>R$ " . $custo['Value'] . " </p></td>";
@@ -31,14 +31,14 @@
                         $total += $custo['Value'];
                     }
                 } else {
-                    echo "<tr class='item_row'><td> Ainda não há registro de custos</td>
+                    echo "<tr align='left' class='item_row'><td> Ainda não há registro de custos</td>
                 <td><p>R$ 00.00 </p></td>";
 
                 }
 
                 ?>
 
-                <tr>
+                <tr align='left'>
                     <td><b>Total</b></td>
                     <td> <?php
                         if ($custos) {
