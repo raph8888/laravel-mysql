@@ -354,6 +354,6 @@ html {
 }
 
 .status_container {
-    border: 1px double #337ab7;
+    /*border: 1px double #337ab7;*/
     padding: 35px;
 }
