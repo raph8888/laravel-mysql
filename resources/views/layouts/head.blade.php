@@ -1,3 +1,5 @@
+{{--Head Content--}}
+
 <title>Copiadora Montes Claros</title>
 
 <meta charset="utf-8">
@@ -10,20 +12,24 @@
 
 <link rel="shortcut icon" href="images/imageedit_3_2454083684.png" />
 
+{{--Jquery CDN--}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
 
+{{--Google API--}}
 <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700" rel="stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBslZHQjMA_mDDSJoD8wKZTmwa_zCwJtF8&?sensor=true"> </script>
-
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="js/javascript.js"></script>
 
+{{--Bootstrap CDN--}}
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"
       type="text/css">
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="css/style.css">
+
+{{--CSS and Javascript--}}
+<link type="text/css" rel="stylesheet" href="css/style.css">
+<script type="text/javascript" src="js/javascript.js"></script>
 
 {{--<link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>--}}
 {{--<script src='http://codepen.io/assets/libs/fullpage/jquery_and_jqueryui.js'></script>--}}
