@@ -7,6 +7,7 @@ use DB;
 use App\Acesso;
 use App\ControleCaixa;
 use App\Custos;
+use App\SMS;
 use Session;
 
 class CashierInsertController extends Controller
@@ -48,42 +49,7 @@ class CashierInsertController extends Controller
 
                     $status_open_day->save();
 
-
-//                        $to = "[\"+5538991926473\"]";
-//
-//                        $message = "O Caixa foi aberto hoje as " . $horas . " por " . $user1 . " e " . $user2 . " Valor do Caixa no momento de abertura: R$ " . $valorentrada;
-//
-//                        $authToken = "7Za3W2ZlRhiLywZraszuIw==";
-//
-//
-//                        $ch = curl_init();
-//
-//
-//                        curl_setopt($ch, CURLOPT_URL, "https://api.clickatell.com/rest/message");
-//
-//                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-//
-//                        curl_setopt($ch, CURLOPT_POST, 1);
-//
-//                        curl_setopt($ch, CURLOPT_VERBOSE, 1);
-//
-//                        curl_setopt($ch, CURLOPT_POSTFIELDS, "{\"text\":\"$message\",\"to\":$to}");
-//
-//                        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-//
-//                            "X-Version: 1",
-//
-//                            "Content-Type: application/json",
-//
-//                            "Accept: application/json",
-//
-//                            "Authorization: Bearer $authToken"
-//
-//                        ));
-//
-//                        $result = curl_exec($ch);
-//
-//                        curl_close($ch);
+                    SMS::open_store_sms($horas, $user1, $user2, $valorentrada);
 
                     return redirect('/status');
 
@@ -136,37 +102,7 @@ class CashierInsertController extends Controller
 
                     $status_close_day->save();
 
-//                        $to = "[\"+5538991926473\"]";
-//
-//                        $message = "O Caixa foi fechado hoje as " . $horas . " por " . $user1 . " e " . $user2 . " Valor do Caixa no momento de fechamento: R$ " . $valorsaida;
-//
-//                        $authToken = "7Za3W2ZlRhiLywZraszuIw==";
-//
-//
-//                        $ch = curl_init();
-//
-//
-//                        curl_setopt($ch, CURLOPT_URL, "https://api.clickatell.com/rest/message");
-//
-//                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-//
-//                        curl_setopt($ch, CURLOPT_POST, 1);
-//
-//                        curl_setopt($ch, CURLOPT_POSTFIELDS, "{\"text\":\"$message\",\"to\":$to}");
-//
-//                        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-//
-//                            "X-Version: 1",
-//
-//                            "Content-Type: application/json",
-//
-//                            "Accept: application/json",
-//
-//                            "Authorization: Bearer $authToken"
-//
-//                        ));
-//
-//                        $result = curl_exec($ch);
+                    SMS::close_store_sms($horas, $user1, $user2, $valorsaida);
 
                     return redirect('/status');
 
