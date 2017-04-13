@@ -30,15 +30,18 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-xs-12">
-            <a href={{ url('/') }}>
-                <p style="float:right; padding-right: 20px; padding-top: 20px;">
-                    Sair da Área Administrativa
-                </p>
-            </a>
-        </div>
-    </div>
 
+        <div class="col-xs-12">
+
+            <a href={{ url('/flush') }}>
+
+                <p style="float:right; padding-right: 20px; padding-top: 20px;">Sair da Área Administrativa</p>
+
+            </a>
+
+        </div>
+
+    </div>
 
     <div class="row">
 

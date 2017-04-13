@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use View;
+use Session;
 
 class GeneralController extends Controller
 {
@@ -9,10 +10,10 @@ class GeneralController extends Controller
         View::share ( 'path', url('/') );
     }
 
-    public function sair()
+    public function flush_session()
     {
         Session::flush();
-        return view('copiadora');
+        return view('services');
 
     }
 
