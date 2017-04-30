@@ -9,6 +9,7 @@ use App\ControleCaixa;
 use App\Custos;
 use App\SMS;
 use Session;
+use App\Services\TextMessage\TextMessage;
 
 class CashierInsertController extends Controller
 {
@@ -49,7 +50,11 @@ class CashierInsertController extends Controller
 
                     $status_open_day->save();
 
-                    SMS::open_store_sms($horas, $user1, $user2, $valorentrada);
+                    $phones = array('0553891926473', '031629058449');
+                    $open_message = SMS::open_store_sms($horas, $user1, $user2, $valorentrada);
+
+                    $instance = new TextMessage;
+                    $message = $instance->sendsms($phones, $open_message);
 
                     return redirect('/status');
 
@@ -102,7 +107,11 @@ class CashierInsertController extends Controller
 
                     $status_close_day->save();
 
-                    SMS::close_store_sms($horas, $user1, $user2, $valorsaida);
+                    $phones = array('0553891926473', '031629058449');
+                    $close_message = SMS::close_store_sms($horas, $user1, $user2, $valorsaida);
+
+                    $instance = new TextMessage;
+                    $message = $instance->sendsms($phones, $close_message);
 
                     return redirect('/status');
 
