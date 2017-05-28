@@ -50,7 +50,7 @@ class CashierInsertController extends Controller
 
                     $status_open_day->save();
 
-                    $phones = array('0553891926473', '031629058449');
+                    $phones = array('05538991926473', '031629058449');
                     $open_message = SMS::open_store_sms($horas, $user1, $user2, $valorentrada);
 
                     $instance = new TextMessage;
@@ -107,7 +107,7 @@ class CashierInsertController extends Controller
 
                     $status_close_day->save();
 
-                    $phones = array('0553891926473', '031629058449');
+                    $phones = array('05538991926473', '031629058449');
                     $close_message = SMS::close_store_sms($horas, $user1, $user2, $valorsaida);
 
                     $instance = new TextMessage;
