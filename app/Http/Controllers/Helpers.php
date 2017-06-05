@@ -95,8 +95,14 @@ class Helpers extends Controller
             $status = 'Algo errado aconteceu, contate Rapha';
 
         }
-
         return $status;
     }
 
+    static function clean_input($data)
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
 }

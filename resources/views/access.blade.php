@@ -7,11 +7,16 @@
 
         <div class="login-card">
 
-            {!! isset($situation) ? $situation : null !!}
+            {!! isset($error) ? $error : null !!}
 
             <h1>Acesso</h1>
 
-            <h1><small><div id="show_date"></div></small></h1><br>
+            <h1>
+                <small>
+                    <div id="show_date"></div>
+                </small>
+            </h1>
+            <br>
 
             <form action={{ $path }}/access method="post" enctype="multipart/form-data">
 

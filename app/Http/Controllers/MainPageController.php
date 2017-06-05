@@ -2,10 +2,12 @@
 namespace App\Http\Controllers;
 
 use App\ControleCaixa;
+use App\Acesso;
 use Illuminate\Http\Request;
 use View;
 use DB;
 use Session;
+use League\Flysystem\Exception;
 
 class MainPageController extends Controller
 {
@@ -46,42 +48,40 @@ class MainPageController extends Controller
      */
     public function access()
     {
-
         if (isset($_POST['user']) && isset($_POST['pass'])) {
 
-            $username = $_REQUEST['user'];
-            $password = $_REQUEST['pass'];
+            $username = Helpers::clean_input($_POST['user']);
+            $password = Helpers::clean_input($_POST['pass']);
 
-            $user = DB::table('Acesso')->where('Nome', $username)->where('Senha', $password)->first();
-
-            if ($user) {
-
-                Session::put('user', $username);
-
-                $day_has_row = DB::table('ControleCaixa')->where('Data', Helpers::diadehoje())->first();
-
-                if (!$day_has_row) {
-
-                    $new_day = new ControleCaixa;
-                    $new_day->Data = Helpers::diadehoje();
-                    $new_day->created_at = time();
-
-                    $new_day->save();
-
+            try {
+                $user = Acesso::where('Nome', $username)->where('Senha', $password)->first();
+                if (!$user) {
+                    throw new Exception('Dados de acesso incorretos');
                 }
-
-                return redirect('status');
-
-            } else {
-
-                return view('access', ['situation' => 'Dados de Acesso incorretos.']);
-
+            } catch (Exception $e) {
+                return view('access', ['error' => $e->getMessage()]);
             }
 
+            Session::put('user', $username);
+
+            MainPageController::insertDay();
+
+            return redirect('status');
+
         } else {
-
             return view('access');
+        }
+    }
 
+    public function insertDay()
+    {
+        $day_has_row = ControleCaixa::where('Data', Helpers::diadehoje())->first();
+
+        if (!$day_has_row) {
+            $new_day = new ControleCaixa;
+            $new_day->Data = Helpers::diadehoje();
+            $new_day->created_at = time();
+            $new_day->save();
         }
     }
 }
