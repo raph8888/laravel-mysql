@@ -4,8 +4,12 @@
 
         <div class="statuscaixa">
 
-            <h3>{!! isset($situation) ? $situation : null !!}</h3>
-            {!! isset($greeting) ? $greeting : null !!}
+            <h3>{!! isset($greetings) ? $greetings : null !!}</h3>
+
+            @if ($is_admin == TRUE)
+                <a href="{{ url('/admin') }}" title="Analisar tabelas">Clique aqui para Analisar Tabelas</a>
+            @endif
+
             <br>
             <br>
             <br>

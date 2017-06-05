@@ -19,7 +19,7 @@ class StatusController extends Controller
     /**
      * Show day status.
      *
-     * @return Response
+     * @return View
      */
     public function status()
     {
@@ -29,48 +29,35 @@ class StatusController extends Controller
 
         } else {
 
-            $status_day = ControleCaixa::where('Data', Helpers::diadehoje())->first();
-            $status_day_open = $status_day->StatusEntrada;
-            $status_day_close = $status_day->StatusSaida;
-            $status_today = Helpers::return_status($status_day_open, $status_day_close);
-            $status_day->status_today = $status_today;
+            //Get current day status
+            $current_day = ControleCaixa::where('Data', Helpers::diadehoje())->first();
+            $status_today = Helpers::return_status($current_day);
+            $current_day->status_today = $status_today;
 
-
-            $previous_id = ControleCaixa::where('IDda', '<', $status_day->IDda)->max('IDda');
+            //Get previous day status
+            $previous_id = ControleCaixa::where('IDda', '<', $current_day->IDda)->max('IDda');
             $previous_day = ControleCaixa::where('IDda', $previous_id)->first();
-            $status_yesterday_open = $previous_day->StatusEntrada;
-            $status_yesterday_close = $previous_day->StatusSaida;
-            $status_yesterday = Helpers::return_status($status_yesterday_open, $status_yesterday_close);
+            $status_yesterday = Helpers::return_status($previous_day);
             $previous_day->status_yesterday = $status_yesterday;
 
-            ////Display list of costs
+            //Get list of costs
             $custos = Custos::where('Date', Helpers::diadehoje())->get();
 
+            //Get username from Session???
             $myusername = Session::get('user');
 
-            $admin = Helpers::findadmin();
-
-            if ($admin === 1) {
-
-                $greeting = '<a href=' . url('/admin') . '>Clique aqui para Analisar Tabelas</a>';
-
-            } else {
-
-                $greeting = "";
-            }
+            //Check if it is admin
+            $is_admin = Helpers::findadmin();
 
             return view('status',
-
                 ['data' => Helpers::diadehoje(),
-                    'situation' => Helpers::greeting() . ' ' . $myusername . ': )',
-                    'greeting' => $greeting,
-                    'status_day' => $status_day,
+                    'greetings' => Helpers::greeting() . ' ' . $myusername,
+                    'status_day' => $current_day,
                     'status_yesterday' => $previous_day,
-                    'custos' => $custos]);
-
+                    'custos' => $custos,
+                    'is_admin' => $is_admin]);
         }
     }
-
 
     //Adicionar Custos
 

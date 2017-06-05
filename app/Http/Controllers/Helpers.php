@@ -72,8 +72,11 @@ class Helpers extends Controller
         return $resp;
     }
 
-    static function return_status($status_day_open, $status_day_close)
+    static function return_status($status_day)
     {
+        $status_day_open = $status_day->StatusEntrada;
+        $status_day_close = $status_day->StatusSaida;
+
         if (!$status_day_open && !$status_day_close) {
 
             $status = 'status/status_open_close';
