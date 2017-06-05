@@ -58,12 +58,17 @@
                         <td> <?php echo $acesso->Senha ?> </td>
                         <td align="center">
 
-                            <?php if($acesso->UserAdmin == 1){echo 'o';} else {echo '-';} ?> </td>
-
+                            <?php if ($acesso->UserAdmin == 1) {
+                                echo 'o';
+                            } else {
+                                echo '-';
+                            } ?> </td>
 
 
                         <td align='middle'>
-                            <a href='{{ url('/') }}/excluir/<?php echo $acesso->Nome ?>' title='Excluir <?php echo $acesso->Nome ?> da Tabela de Acesso' id='<?php echo $acesso->Nome ?>' class='delete' style='color: red'>x</a>
+                            <a href='{{ url('/') }}/excluir/<?php echo $acesso->Nome ?>'
+                               title='Excluir <?php echo $acesso->Nome ?> da Tabela de Acesso'
+                               id='<?php echo $acesso->Nome ?>' class='delete' style='color: red'>x</a>
                         </td>
                     </tr>
 
@@ -73,7 +78,9 @@
                 </table>
 
                 <br>
-                <a href=" {{ url('/adicionar') }}" title="Adicionar Acessos"><button>Adicionar Acesso (+)</button></a>
+                <a href=" {{ url('/adicionar') }}" title="Adicionar Acessos">
+                    <button>Adicionar Acesso (+)</button>
+                </a>
 
             </div>
 
@@ -101,15 +108,16 @@
 
                         echo "<tr class='item_row'>";
 
-                        echo "<td><b>" .$controle->Data. "</b></td>
-                       <td>".$controle->Entrada1. " / "
-                            .$controle->Entrada2. " </td>
-                       <td><b><p style='color: green;'>R$".$controle->ValorEntrada. ",00</p></b></td>
-                       <td>".$controle->timeEntrada. "</td>
-                       <td>".$controle->Saida1. "/
-                           ".$controle->Saida2. " </td>
-                       <td><b><p style='color: blue;'>R$".$controle->ValorSaida. ",00</p></b></td>
-                       <td>".$controle->timeSaida. "</td></tr>"; }
+                        echo "<td><b>" . $controle->Data . "</b></td>
+                       <td>" . $controle->Entrada1 . " / "
+                            . $controle->Entrada2 . " </td>
+                       <td><b><p style='color: green;'>R$" . $controle->ValorEntrada . ",00</p></b></td>
+                       <td>" . $controle->timeEntrada . "</td>
+                       <td>" . $controle->Saida1 . "/
+                           " . $controle->Saida2 . " </td>
+                       <td><b><p style='color: blue;'>R$" . $controle->ValorSaida . ",00</p></b></td>
+                       <td>" . $controle->timeSaida . "</td></tr>";
+                    }
 
                     ?>
 
@@ -129,9 +137,9 @@
         <div class="row">
             <div class="col-md-4">
 
-                <a href= {{ url('/alldays') }}><p>  Lista completa de Abertura e Fechamento do Caixa </p> </a>
+                <a href= {{ url('/alldays') }}><p> Lista completa de Abertura e Fechamento do Caixa </p></a>
 
-                <a href= {{ url('/allcosts') }}><p>   Lista completa de Custos </p> </a>
+                <a href= {{ url('/allcosts') }}><p> Lista completa de Custos </p></a>
             </div>
 
         </div>
@@ -143,14 +151,16 @@
 
 
     <script>
-        $( "li" ).click(function() {
+        $("li").click(function () {
             var date = $(this).attr("id");
             $.ajax({
-                url : '{{ url('/administrador/check') }}',
+                url: '{{ url('/administrador/check') }}',
                 type: "POST",
-                data: {name : date,
-                    '_token': '{!! csrf_token() !!}'},
-                success:function (result) {
+                data: {
+                    name: date,
+                    '_token': '{!! csrf_token() !!}'
+                },
+                success: function (result) {
                     $("#yourdiv").html(result);
                 }
             });
@@ -159,10 +169,10 @@
 
 
     <script language="JavaScript" type="text/javascript">
-        $(document).ready(function(){
-            $("a.delete").click(function(e){
+        $(document).ready(function () {
+            $("a.delete").click(function (e) {
                 var currentId = $(this).attr('id');
-                if(!confirm('Excluir '+ currentId + ' da lista de Acesso?')){
+                if (!confirm('Excluir ' + currentId + ' da lista de Acesso?')) {
                     e.preventDefault();
                     return false;
                 }
