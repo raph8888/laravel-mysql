@@ -27,8 +27,8 @@ class TextMessage
         $this->originator = Config::read('organisation');
     }
 
-    public function sendsms($phone_number = '', $message_text = '') {
-        
+    public function sendsms($phone_number = '', $message_text = '')
+    {
         if (empty($message_text)) {
             throw new ValidationException('Empty messages are invalid');
         }
@@ -54,9 +54,24 @@ class TextMessage
         return $response;
     }
 
-    public function getcredits() {
+    public function getcredits()
+    {
         $balance = $this->client->balance->read();
         return $balance;
+    }
+    
+    public function applyCountryCode($phone_number)
+    {
+        if (substr($phone_number, 0, 4) == '0031') {
+            return '31' . substr($phone_number, 4);
+        } elseif (substr($phone_number, 0, 3) == '316') {
+            return $phone_number;
+        } elseif (substr($phone_number, 0, 2) == '06') {
+            return substr_replace($phone_number,'31', 0, 1);
+        }
+        
+        throw new ValidationException(sprintf('Unexpected format of phone number %s'
+            .', expected it starts with 0031, 31 or 316', $phone_number));
     }
 
 }
