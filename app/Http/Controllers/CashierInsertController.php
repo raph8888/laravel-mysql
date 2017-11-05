@@ -1,6 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\App;
+use Nexmo;
+
 use Illuminate\Http\Request;
 use View;
 use DB;
@@ -50,11 +53,20 @@ class CashierInsertController extends Controller
 
                     $status_open_day->save();
 
-                    $phones = array('05538991926473', '031629058449');
+//                    $phones = array('05538991926473', '031629058449');
+//                    $instance = new TextMessage;
+//                    $message = $instance->sendsms($phones, $open_message);
+
                     $open_message = SMS::open_store_sms($horas, $user1, $user2, $valorentrada);
 
-                    $instance = new TextMessage;
-                    $message = $instance->sendsms($phones, $open_message);
+                    $app= App::getFacadeRoot();
+                    $config = $app['config']->get('services.nexmo', []);
+                    $client = new Nexmo\Client(new Nexmo\Client\Credentials\Basic($config['key'], $config['secret']));
+                    $message = $client->message()->send([
+                        'to' => 5538991926473,
+                        'from' => 31629058449,
+                        'text' => $open_message
+                    ]);
 
                     return redirect('/status');
 
@@ -107,11 +119,20 @@ class CashierInsertController extends Controller
 
                     $status_close_day->save();
 
-                    $phones = array('05538991926473', '031629058449');
+//                    $phones = array('05538991926473', '031629058449');
+//                    $instance = new TextMessage;
+//                    $message = $instance->sendsms($phones, $close_message);
+
                     $close_message = SMS::close_store_sms($horas, $user1, $user2, $valorsaida);
 
-                    $instance = new TextMessage;
-                    $message = $instance->sendsms($phones, $close_message);
+                    $app= App::getFacadeRoot();
+                    $config = $app['config']->get('services.nexmo', []);
+                    $client = new Nexmo\Client(new Nexmo\Client\Credentials\Basic($config['key'], $config['secret']));
+                    $message = $client->message()->send([
+                        'to' => 5538991926473,
+                        'from' => 31629058449,
+                        'text' => $close_message
+                    ]);
 
                     return redirect('/status');
 
