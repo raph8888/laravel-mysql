@@ -59,12 +59,15 @@ Route::get('/editar/{name}', 'AdminController@edit');
 //Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 
-//Route::get('hello', 'Hello@index');
-//Route::get('/hello/{name}', 'Hello@show');
-//Route::get('copiadora', 'CopiadoraController@index');
-//Route::get('/mensagem', 'CopiadoraController@errors');
+Route::get('task', function () {
+    return view('task');
+});
 
 Route::get('/flush', 'GeneralController@flush_session');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::prefix('api')->group(function() {
+    Route::resource('tasks', 'TaskController');
+});
