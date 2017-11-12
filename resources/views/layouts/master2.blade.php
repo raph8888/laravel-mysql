@@ -39,7 +39,7 @@
             <ul>
                 <li id="logout-btn-wrapper">
                     <a title="Analisar tabelas" href={{ url('/status') }}>
-                        Status
+                        Caixa
                     </a>
                 </li>
                 <li id="logout-btn-wrapper">

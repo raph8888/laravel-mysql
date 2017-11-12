@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="text-center">
-        <div class="col-md-6 col-sm-6 col-xs-6" style="border-bottom: 2px solid #81afcd; border-left: 2px solid #81afcd; border-right: 2px solid #81afcd;
+        <div class="col-md-4 col-sm-4 col-xs-4" style="border-bottom: 2px solid #81afcd; border-left: 2px solid #81afcd; border-right: 2px solid #81afcd;
     padding-bottom: 20px;
     padding-top: 47px; margin: 50px 0px 0px 200px;">
             <img src="images/torn-paper.png" width="100%" height="80px" style="position: absolute;
@@ -21,36 +21,34 @@
 
                 <?php
                 $total = 0;
-                if ($custos) {
-                    foreach ($custos as $custo) {
-
-                        echo "<tr align='left' class='item_row'>";
-
-                        echo "<td> " . $custo['Description'] . " </td>
-                <td><p>R$ " . $custo['Value'] . " </p></td>";
-
-                        $total += $custo['Value'];
-                    }
-                } else {
-                    echo "<tr align='left' class='item_row'><td> Ainda não há registro de custos</td>
-                <td><p>R$ 00.00 </p></td>";
-
-                }
-
                 ?>
+
+                @if ($custos)
+                    @foreach ($custos as $custo)
+                        <tr align='left' class='item_row'>
+                            <td> {{ $custo['Description'] }}</td>
+                            <td><p>R$ {{ $custo['Value'] }} </p></td>
+
+                        <?php
+                        $total += $custo['Value'];
+                        ?>
+                    @endforeach
+                @else
+                    <tr align='left' class='item_row'>
+                        <td> Ainda não há registro de custos</td>
+                        <td><p>R$ 00.00 </p></td>
+                @endif
 
                 <tr align='left'>
                     <td><b>Total</b></td>
-                    <td> <?php
-                        if ($custos) {
-                            echo "R$ " . $total;
-                        } else {
-                            echo "R$ 00.00";
-                        }
-                        ?>
+                    <td>
+                        @if ($custos)
+                            <p>R$ {{ $total }}</p>
+                        @else
+                            <p>"R$ 00.00";</p>
+                        @endif
                     </td>
                 </tr>
-
                 </tbody>
             </table>
 

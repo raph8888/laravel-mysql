@@ -5,8 +5,8 @@
     <br>
 
     <div class="text-center">
-        <div class=" hidden-xs hidden-sm col-md-5 text-center" style="color: grey;">
-            <h2>Status Anterior</h2>
+        <div class=" hidden-xs hidden-sm col-md-4 text-center" style="color: grey;">
+            <h2>Caixa Anterior</h2>
             <h4>({{ $status_yesterday->Data }})</h4>
 
             <br>
@@ -22,8 +22,8 @@
             <div style="font-size: 25px;"> R$ {{ $status_yesterday->ValorSaida }},00</div>
         </div>
 
-        <div class="col-xs-12 col-sm-12 col-md-7 text-center">
-            <h2>Status de Hoje</h2>
+        <div class="col-xs-12 col-sm-12 col-md-7 text-center" style="    padding-right: 80px;">
+            <h2>Caixa de Hoje</h2>
             <h4>({{$status_day->Data}})</h4>
 
             <br>
@@ -32,6 +32,9 @@
                 @include($status_day->status_today)
             </div>
 
+        </div>
+
+        <div class=" hidden-xs hidden-sm col-md-1 text-center">
         </div>
 
         <br><br><br>
