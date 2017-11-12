@@ -4,6 +4,10 @@
     <br>
     <br>
 
+    <p style="color: red;">{!! isset($error) ? $error : null !!}</p>
+
+    <br>
+    <br>
     <div class="login-card">
         <div id="data"></div>
         <h1>Fechamento do Caixa</h1><br>

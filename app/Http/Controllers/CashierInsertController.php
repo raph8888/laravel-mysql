@@ -71,9 +71,8 @@ class CashierInsertController extends Controller
                     return redirect('/status');
 
                 } else {
-
-                    echo "Nome ou Senha de Acesso Incorretos.";
-                    return view('inserirentrada');
+                    $error_message = "Nome ou Senha de Acesso Incorretos.";
+                    return view('inserirentrada', ['error' => $error_message]);
                 }
 
             } else {
@@ -137,9 +136,8 @@ class CashierInsertController extends Controller
                     return redirect('/status');
 
                 } else {
-
-                    echo "Nome ou Senha de Acesso Incorretos.";
-                    return view('inserirsaida');
+                    $error_message = "Nome ou Senha de Acesso Incorretos.";
+                    return view('inserirsaida', ['error' => $error_message]);
                 }
 
             } else {
