@@ -5,7 +5,7 @@
 
         <br>
 
-        <div class="login-card">
+        <div class="login-card text-center">
 
             {!! isset($error) ? $error : null !!}
 
@@ -21,7 +21,9 @@
             <form action={{ $path }}/access method="post" enctype="multipart/form-data">
 
                 <input type="text" name="user" placeholder="Nome" required>
+                <br>
                 <input type="password" name="pass" placeholder="Senha" required>
+                <br>
                 <input type="submit" name="login" class="login login-submit" value="Acessar">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 

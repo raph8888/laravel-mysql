@@ -1,4 +1,3 @@
-<div class="row">
     <div class="container-flex">
 
         <div class="col-xs-12 col-sm-12 col-md-12 abertura_status">
@@ -17,7 +16,6 @@
         </div>
 
     </div>
-</div>
 
 <style>
 

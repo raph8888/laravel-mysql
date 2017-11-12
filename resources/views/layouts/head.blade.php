@@ -33,3 +33,7 @@
 
 {{--<link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>--}}
 {{--<script src='http://codepen.io/assets/libs/fullpage/jquery_and_jqueryui.js'></script>--}}
+
+<!-- CSRF Stuff -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<script>window.Laravel = { csrfToken: '{{ csrf_token() }}' }</script>

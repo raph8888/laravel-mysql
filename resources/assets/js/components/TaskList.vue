@@ -1,5 +1,5 @@
 <template>
-    <div class='row'>
+    <div class='lembretes' style="max-width: 500px;">
         <h1>Lembretes</h1>
         <h4>Novo lembrete</h4>
         <form action="#" @submit.prevent="createTask()">

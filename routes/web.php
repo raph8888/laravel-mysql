@@ -25,6 +25,9 @@ Route::match(['get', 'post'], 'access', 'MainPageController@access');
 Route::match(['get', 'post'], 'status', 'StatusController@status');
 Route::match(['get', 'post'], '/custos', 'StatusController@custos');
 
+//Routes calling CostsController
+
+Route::match(['get', 'post'], '/costs', 'CostsController@status');
 
 //Routes calling CashierInsertController
 

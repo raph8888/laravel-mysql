@@ -1,7 +1,8 @@
 @extends('layouts.master2')
 @section('content')
 
-
+    <br>
+    <br>
 
     <div class="login-card">
         <div id="data"></div>
@@ -13,7 +14,9 @@
             <input type="text" name="user2" placeholder="Nome 2" required>
             <input type="password" name="pass2" placeholder="Senha 2" required>
             <br>
-            <input type="text" name="valorsaida" placeholder="Valor de Fechamento" required>
+            <br>
+            <br>
+            <input type="text" name="valorsaida" placeholder="Valor Fechamento" required>
             <input type="submit" name="login" class="login login-submit" value="Concluir">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
         </form>

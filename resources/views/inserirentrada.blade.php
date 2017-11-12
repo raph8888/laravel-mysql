@@ -1,7 +1,8 @@
 @extends('layouts.master2')
 @section('content')
 
-
+    <br>
+    <br>
     <div class="login-card">
         <div id="data"></div>
         <h1>Abertura do Caixa</h1><br>
@@ -12,7 +13,9 @@
             <input type="text" name="user2" placeholder="Nome 2" required>
             <input type="password" name="pass2" placeholder="Senha 2" required>
             <br>
-            <input type="text" name="valorentrada" placeholder="Valor de Abertura" required>
+            <br>
+            <br>
+            <input type="number" name="valorentrada" placeholder="Valor Abertura" required>
             <input type="submit" name="login" class="login login-submit" value="Concluir">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
         </form>
@@ -41,13 +44,13 @@
         NomeMes[10] = "11"
         NomeMes[11] = "12"
 
-        var data=new Date();
-        var dia=data.getDate();
-        if(dia < 10) {
+        var data = new Date();
+        var dia = data.getDate();
+        if (dia < 10) {
             dia = "0" + dia;
         }
-        var mes=data.getMonth();
-        var ano=data.getFullYear();
+        var mes = data.getMonth();
+        var ano = data.getFullYear();
 
         data = dia + ' / ' + NomeMes[mes] + ' / ' + ano;
 

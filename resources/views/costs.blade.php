@@ -1,9 +1,10 @@
-<div class="row">
+@extends('layouts.master2')
+@section('content')
 
-    <div class="container-flex">
-        <div class="col-md-12 col-sm-12 col-xs-12" style="border-bottom: 2px solid #81afcd; border-left: 2px solid #81afcd; border-right: 2px solid #81afcd;
+    <div class="text-center">
+        <div class="col-md-6 col-sm-6 col-xs-6" style="border-bottom: 2px solid #81afcd; border-left: 2px solid #81afcd; border-right: 2px solid #81afcd;
     padding-bottom: 20px;
-    padding-top: 47px;">
+    padding-top: 47px; margin: 50px 0px 0px 200px;">
             <img src="images/torn-paper.png" width="100%" height="80px" style="position: absolute;
     top: -22px;
     left: 0px;">
@@ -72,7 +73,25 @@
             {!! isset($resultado) ? $resultado : null !!}
 
         </div>
-
     </div>
 
-</div>
+    <script>
+        $('input#add').click(function () {
+            var custo = $('input#newcost').val();
+            var value = $('input#newvalue').val();
+            $.ajax({
+                url: '{{ url('/custos') }}',
+                type: "POST",
+                data: {
+                    custo: custo,
+                    value: value,
+                    '_token': '{!! csrf_token() !!}'
+                },
+                success: function (result) {
+                    window.location.reload(true);
+                }
+            });
+        });
+    </script>
+
+@endsection
