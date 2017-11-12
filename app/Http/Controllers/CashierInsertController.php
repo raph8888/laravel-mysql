@@ -63,7 +63,7 @@ class CashierInsertController extends Controller
                     $config = $app['config']->get('services.nexmo', []);
                     $client = new Nexmo\Client(new Nexmo\Client\Credentials\Basic($config['key'], $config['secret']));
                     $message = $client->message()->send([
-                        'to' => 5538991926473,
+                        'to' => 5538988169232,
                         'from' => 31629058449,
                         'text' => $open_message
                     ]);
@@ -128,7 +128,7 @@ class CashierInsertController extends Controller
                     $config = $app['config']->get('services.nexmo', []);
                     $client = new Nexmo\Client(new Nexmo\Client\Credentials\Basic($config['key'], $config['secret']));
                     $message = $client->message()->send([
-                        'to' => 5538991926473,
+                        'to' => 5538988169232,
                         'from' => 31629058449,
                         'text' => $close_message
                     ]);
