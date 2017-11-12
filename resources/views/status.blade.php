@@ -4,9 +4,9 @@
     <br>
     <br>
 
-    <div class="text-center">
+    <div class="text-center status-container">
         <div class=" hidden-xs hidden-sm col-md-4 text-center" style="color: grey;">
-            <h2>Caixa Anterior</h2>
+            <h2>Caixa Fechado</h2>
             <h4>({{ $status_yesterday->Data }})</h4>
 
             <br>
@@ -22,10 +22,11 @@
             <div style="font-size: 25px;"> R$ {{ $status_yesterday->ValorSaida }},00</div>
         </div>
 
-        <div class="col-xs-12 col-sm-12 col-md-7 text-center" style="    padding-right: 80px;">
-            <h2>Caixa de Hoje</h2>
+        <div class="col-xs-12 col-sm-12 col-md-6 text-center">
+            <h2>Caixa Aberto</h2>
             <h4>({{$status_day->Data}})</h4>
 
+            <br>
             <br>
 
             <div style="font-size: 25px;">
@@ -33,10 +34,6 @@
             </div>
 
         </div>
-
-        <div class=" hidden-xs hidden-sm col-md-1 text-center">
-        </div>
-
         <br><br><br>
     </div>
 

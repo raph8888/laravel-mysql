@@ -26,55 +26,56 @@
 
 <div class="container-fluid">
 
-<div class="row">
+    <div class="row">
 
-    <div class="col-xs-2 col-md-2 text-center no-padding-left">
-    <nav id="main-menu" role="navigation">
-        <div class="block">
-            <div id="logo-wrapper">
-                <a id="logo" title="Copiadora Montes Claros" href={{ url('/status') }}>
-                    <img id="logo-main-page" src="images/Untitled.png" alt="Copiadora Montes Claros logo">
-                </a>
-            </div>
-            <ul>
-                <li id="logout-btn-wrapper">
-                    <a title="Analisar tabelas" href={{ url('/status') }}>
-                        Caixa
-                    </a>
-                </li>
-                <li id="logout-btn-wrapper">
-                    <a title="Analisar tabelas" href={{ url('/costs') }}>
-                        Custos
-                    </a>
-                </li>
-                <li id="logout-btn-wrapper">
-                    <a onclick="return confirm('Tem certeza que deseja sair?')" title="Desconectar Copiadora Montes Claros" href={{ url('/flush') }}>
-                        Sair
-                    </a>
-                </li>
-            </ul>
+        <div class="col-xs-2 col-md-2 text-center no-padding-left">
+            <nav id="main-menu" role="navigation">
+                <div class="block">
+                    <div id="logo-wrapper">
+                        <a id="logo" title="Copiadora Montes Claros" href={{ url('/status') }}>
+                            <img id="logo-main-page" src="images/Untitled.png" alt="Copiadora Montes Claros logo">
+                        </a>
+                    </div>
+                    <ul>
+                        <li id="logout-btn-wrapper">
+                            <a title="Analisar tabelas" href={{ url('/status') }}>
+                                Caixa
+                            </a>
+                        </li>
+                        <li id="logout-btn-wrapper">
+                            <a title="Analisar tabelas" href={{ url('/costs') }}>
+                                Custos
+                            </a>
+                        </li>
+                        <li id="logout-btn-wrapper">
+                            <a onclick="return confirm('Tem certeza que deseja sair?')"
+                               title="Desconectar Copiadora Montes Claros" href={{ url('/flush') }}>
+                                Sair
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         </div>
-    </nav>
 
-    </div>
+        <div class="col-xs-10 col-md-10 text-center no-padding-right">
 
-    <div class="col-xs-10 col-md-10 text-center no-padding-right">
-
-        <header>
-                    <div id="top-menu-profile-wrapper">
-                        <div id="top-menu-profile-text">
-                            <p>{!! isset($greetings) ? $greetings : null !!}</p>
-                            <div class="noprint">
-                                <a onclick="return confirm('Tem certeza que deseja sair?')" href={{ url('/flush') }} class="top-menu-link">Sair</a>
-                            </div>
+            <header>
+                <div id="top-menu-profile-wrapper">
+                    <div id="top-menu-profile-text">
+                        <p>{!! isset($greetings) ? $greetings : null !!}</p>
+                        <div class="noprint">
+                            <a onclick="return confirm('Tem certeza que deseja sair?')"
+                               href={{ url('/flush') }} class="top-menu-link">Sair</a>
                         </div>
                     </div>
-        </header>
+                </div>
+            </header>
 
-        @yield('content')
+            @yield('content')
+        </div>
+
     </div>
-
-</div>
 </div>
 
 @include('layouts/footer')

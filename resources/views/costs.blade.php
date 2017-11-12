@@ -2,9 +2,10 @@
 @section('content')
 
     <div class="text-center">
+        <div class="col-md-4 col-sm-4 col-xs-4" ></div>
         <div class="col-md-4 col-sm-4 col-xs-4" style="border-bottom: 2px solid #81afcd; border-left: 2px solid #81afcd; border-right: 2px solid #81afcd;
     padding-bottom: 20px;
-    padding-top: 47px; margin: 50px 0px 0px 200px;">
+    padding-top: 47px; margin-top: 30px;">
             <img src="images/torn-paper.png" width="100%" height="80px" style="position: absolute;
     top: -22px;
     left: 0px;">
@@ -58,19 +59,18 @@
     margin-bottom: 20px;">
                 <p>Incluir Despesa</p>
 
-                <input type="text" name="newcost" id="newcost" placeholder="Descrição" style="width: 40%;
-    display: inline;" required>
-                <input type="number" name="newvalue" id="newvalue" placeholder="Valor" step="0.01" min="0.01"
-                       max="99" style="width: 40%;
-    display: inline;" required/>
+                <input class="cost-input cost-description inline" type="text" name="newcost" id="newcost"
+                       placeholder="Descrição" required>
+                <input class="cost-input cost-value inline" type="number" name="newvalue" id="newvalue"
+                       placeholder="Valor" step="0.01" min="0.01"
+                       max="99" required/>
                 <br>
                 <br>
                 <input type="submit" name="add" class="add" id="add" value="Adicionar (+)">
             </div>
-
             {!! isset($resultado) ? $resultado : null !!}
-
         </div>
+        <div class="col-md-4 col-sm-4 col-xs-4" ></div>
     </div>
 
     <script>
