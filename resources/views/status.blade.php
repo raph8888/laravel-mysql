@@ -6,7 +6,7 @@
 
     <div class="text-center">
         <div class=" hidden-xs hidden-sm col-md-5 text-center" style="color: grey;">
-            <h2>Status de Ontem</h2>
+            <h2>Status Anterior</h2>
             <h4>({{ $status_yesterday->Data }})</h4>
 
             <br>
