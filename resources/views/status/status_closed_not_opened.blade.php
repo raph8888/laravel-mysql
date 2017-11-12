@@ -2,7 +2,7 @@
 
         <div class="col-xs-12 col-sm-12 col-md-12 abertura_status">
             <div class="abertura">
-                <p style="color: #33CC33">Abertura do Caixa Executada<br>Obrigado</p>
+                <p style="color: #ff0000">Abertura do caixa bloqueada.<br></p>
             </div>
         </div>
 
@@ -11,7 +11,9 @@
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="fechamento">
-                <p style="color: #33CC33">Fechamento do Caixa Executado<br>Obrigado</p>
+                <p style="color: #33CC33">Fechamento do caixa executado,
+                    <br>
+                    obrigada {{$status_day->Saida1}} e {{$status_day->Saida2}}.</p>
             </div>
         </div>
 

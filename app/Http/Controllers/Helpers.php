@@ -11,7 +11,6 @@ class Helpers extends Controller
 
     static function diadehoje()
     {
-
         $mes = date('M');
         $dia = date('d');
         $ano = date('Y');
@@ -61,14 +60,11 @@ class Helpers extends Controller
         $hr = date(" H ");
         if ($hr >= 12 && $hr < 18) {
             $resp = "Boa tarde";
-
         } else if ($hr >= 0 && $hr < 12) {
             $resp = "Bom dia";
-
         } else {
             $resp = "Boa noite";
         }
-
         return $resp;
     }
 
@@ -78,25 +74,15 @@ class Helpers extends Controller
         $status_day_close = $status_day->StatusSaida;
 
         if (!$status_day_open && !$status_day_close) {
-
-            $status = 'status/status_open_close';
-
+            $status = 'status/status_initial';
         } elseif ($status_day_open && !$status_day_close) {
-
-            $status = 'status/status_close';
-
+            $status = 'status/status_opened_not_closed';
         } elseif ($status_day_open && $status_day_close) {
-
-            $status = 'status/status_finished';
-
+            $status = 'status/status_success';
         } elseif (!$status_day_open && $status_day_close) {
-
-            $status = 'status/status_open_blocked';
-
+            $status = 'status/status_closed_not_opened';
         } else {
-
-            $status = 'Algo errado aconteceu, contate Rapha';
-
+            $status = 'It is statistically and technically impossible to get here.';
         }
         return $status;
     }
