@@ -6,7 +6,7 @@
 
     <div class="text-center status-container">
         <div class=" hidden-xs hidden-sm col-md-4 text-center" style="color: grey;">
-            <h2>Caixa Fechado</h2>
+            <h2>Caixa Prévio</h2>
             <h4>({{ $status_yesterday->Data }})</h4>
 
             <br>
@@ -23,7 +23,12 @@
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-6 text-center">
-            <h2>Caixa Aberto</h2>
+            @if ($status_day->ValorSaida)
+                <h2>Caixa Fechado</h2>
+            @else
+                <h2>Caixa Aberto</h2>
+            @endif
+
             <h4>({{$status_day->Data}})</h4>
 
             <br>
