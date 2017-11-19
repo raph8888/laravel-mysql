@@ -10,7 +10,7 @@
         {{-- BOOK 1ST PAGE - PREVIOUS DAY--}}
         <div class=" hidden-xs hidden-sm col-md-4" style="color: #6e798d;">
 
-            <div class="status-title text-center">
+            <div class="status-title text-align-left">
                 <h2>Caixa Prévio</h2>
                 <h4>({{ $status_yesterday->Data }})</h4>
             </div>
@@ -51,7 +51,7 @@
 
         {{-- BOOK 2ND PAGE - CURRENT DAY--}}
         <div class="col-xs-12 col-sm-12 col-md-4">
-            <div class="status-title text-center">
+            <div class="status-title text-align-left">
                 @if ($status_day->ValorSaida)
                     <h2>Caixa Fechado</h2>
                 @else
