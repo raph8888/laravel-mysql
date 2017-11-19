@@ -25,7 +25,7 @@
                     <h4 style="color: #33CC33; display: inline">Executada</h4>
                     <br>
                     <h4>- {{ $status_yesterday->Entrada1 }} / {{ $status_yesterday->Entrada2 }}  </h4>
-                    <h4> R$ {{ $status_yesterday->ValorEntrada }},00</h4>
+                    <h4>- R$ {{ $status_yesterday->ValorEntrada }},00</h4>
                 @else
                     <h4 style="color: #ff0000;">Pendente</h4>
                 @endif
