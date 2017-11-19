@@ -74,15 +74,15 @@ class Helpers extends Controller
         $status_day_close = $status_day->StatusSaida;
 
         if (!$status_day_open && !$status_day_close) {
-            $status = 'status/status_initial';
+            $status = 'status_initial';
         } elseif ($status_day_open && !$status_day_close) {
-            $status = 'status/status_opened_not_closed';
+            $status = 'status_opened_not_closed';
         } elseif ($status_day_open && $status_day_close) {
-            $status = 'status/status_success';
+            $status = 'status_success';
         } elseif (!$status_day_open && $status_day_close) {
-            $status = 'status/status_closed_not_opened';
+            $status = 'status_closed_not_opened';
         } else {
-            $status = 'It is statistically and technically impossible to get here.';
+            $status = 'It is statistically impossible to get here.';
         }
         return $status;
     }

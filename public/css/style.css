@@ -341,7 +341,7 @@ html {
 }
 
 .footer {
-    height: 80px;
+    height: 100px;
     text-align: center;
     background: #6485a3;
     color: white;
@@ -432,6 +432,28 @@ header {
 .cost-input{
     width:40% !important;
     max-height: 40px !important;
+}
+
+.status-container-background{
+    display: block;
+    overflow:auto;
+    padding-bottom: 40px;
+}
+
+.note-pad-img{
+    z-index: -1;
+    position: absolute;
+    width: 82%;
+    height: 67%;
+    bottom: 7px;
+    right: 105px;
+}
+
+.text-align-left{
+    text-align: left;
+}
+.status-info{
+
 }
 
 /*DISASTER CASUED BY THE CSS .login-card input[type=text], input[type=number], input[type=password]*/
