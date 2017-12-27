@@ -20,7 +20,7 @@
                     <p><strong>Telefones/Fax</strong></p>
                     <img style="width: 80px;" src="images/phone.png">
 
-                    <p>(38) 3221-0798 / (38) 3213-5080</p>
+                    <p>(38) 3221-0798 / (38) 98823-1033</p>
                 </div>
 
                 <div class="col-xs-12 col-md-4">

@@ -72,7 +72,7 @@
                     <div class="images">
                         <img class="img-services quarto" width="120" height="120" src="images/IMG7.jpg">
                         &nbsp;
-                        <p class="img-services quarto">Envio de fax</p>
+                        <p class="img-services quarto">Acesso à internet</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-xs-6">
