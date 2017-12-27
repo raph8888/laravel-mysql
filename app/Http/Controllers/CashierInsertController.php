@@ -57,16 +57,16 @@ class CashierInsertController extends Controller
 //                    $instance = new TextMessage;
 //                    $message = $instance->sendsms($phones, $open_message);
 
-                    $open_message = SMS::open_store_sms($horas, $user1, $user2, $valorentrada);
+//                    $open_message = SMS::open_store_sms($horas, $user1, $user2, $valorentrada);
 
-                    $app= App::getFacadeRoot();
-                    $config = $app['config']->get('services.nexmo', []);
-                    $client = new Nexmo\Client(new Nexmo\Client\Credentials\Basic($config['key'], $config['secret']));
-                    $message = $client->message()->send([
-                        'to' => 5538988169232,
-                        'from' => 31629058449,
-                        'text' => $open_message
-                    ]);
+//                    $app= App::getFacadeRoot();
+//                    $config = $app['config']->get('services.nexmo', []);
+//                    $client = new Nexmo\Client(new Nexmo\Client\Credentials\Basic($config['key'], $config['secret']));
+//                    $message = $client->message()->send([
+//                        'to' => 5538988169232,
+//                        'from' => 31629058449,
+//                        'text' => $open_message
+//                    ]);
 
                     return redirect('/status');
 
@@ -88,7 +88,6 @@ class CashierInsertController extends Controller
 
         }
     }
-
 
     public function inserirsaida()
     {
@@ -122,16 +121,16 @@ class CashierInsertController extends Controller
 //                    $instance = new TextMessage;
 //                    $message = $instance->sendsms($phones, $close_message);
 
-                    $close_message = SMS::close_store_sms($horas, $user1, $user2, $valorsaida);
+//                    $close_message = SMS::close_store_sms($horas, $user1, $user2, $valorsaida);
 
-                    $app= App::getFacadeRoot();
-                    $config = $app['config']->get('services.nexmo', []);
-                    $client = new Nexmo\Client(new Nexmo\Client\Credentials\Basic($config['key'], $config['secret']));
-                    $message = $client->message()->send([
-                        'to' => 5538988169232,
-                        'from' => 31629058449,
-                        'text' => $close_message
-                    ]);
+//                    $app= App::getFacadeRoot();
+//                    $config = $app['config']->get('services.nexmo', []);
+//                    $client = new Nexmo\Client(new Nexmo\Client\Credentials\Basic($config['key'], $config['secret']));
+//                    $message = $client->message()->send([
+//                        'to' => 5538988169232,
+//                        'from' => 31629058449,
+//                        'text' => $close_message
+//                    ]);
 
                     return redirect('/status');
 
