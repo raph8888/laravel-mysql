@@ -23,7 +23,10 @@ Route::match(['get', 'post'], 'access', 'MainPageController@access');
 //Routes calling StatusController
 
 Route::match(['get', 'post'], 'status', 'StatusController@status');
+Route::match(['get', 'post'], 'charts', 'ChartsController@index');
 Route::match(['get', 'post'], '/custos', 'StatusController@custos');
+Route::match(['get', 'post'], 'chartscashier', 'ChartsCashierController@index');
+Route::match(['get', 'post'], 'chartssaidacashier', 'ChartsSaidaCashierController@index');
 
 //Routes calling CostsController
 
