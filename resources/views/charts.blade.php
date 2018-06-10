@@ -27,7 +27,7 @@
         function drawChart() {
 
             var jsonData = $.ajax({
-                url: "/laravel-mysql/public/chartscashier",
+                url: "/chartscashier",
                 dataType: "json",
                 async: false
             }).responseText;
@@ -35,7 +35,7 @@
 
 
             var saidaJsonData = $.ajax({
-                url: "/laravel-mysql/public/chartssaidacashier",
+                url: "/chartssaidacashier",
                 dataType: "json",
                 async: false
             }).responseText;
