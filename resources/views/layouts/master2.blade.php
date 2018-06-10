@@ -3,6 +3,7 @@
 <head>
     @include('layouts/head')
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
 <?php $dayid = "li-" . date('d-m-Y'); ?>
@@ -40,6 +41,11 @@
                         <li id="logout-btn-wrapper">
                             <a title="Analisar tabelas" href={{ url('/status') }}>
                                 Caixa
+                            </a>
+                        </li>
+                        <li id="logout-btn-wrapper">
+                            <a title="Graficos" href={{ url('/charts') }}>
+                                Gráficos
                             </a>
                         </li>
                         <li id="logout-btn-wrapper">
