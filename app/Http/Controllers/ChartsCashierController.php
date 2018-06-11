@@ -28,7 +28,16 @@ class ChartsCashierController extends Controller
 
         } else {
 
-            $entrada_count = DB::select("SELECT name, COUNT(*) AS count FROM(SELECT Entrada1 AS name FROM ControleCaixa UNION ALL SELECT Entrada2 AS name FROM ControleCaixa) x GROUP BY name", [1]);
+
+            if(!empty($_GET['start']) && !empty($_GET['end'])){
+                $start = strtotime($_GET['start']);
+                $end = strtotime($_GET['end']);
+
+                $entrada_count = DB::select("SELECT name, COUNT(*) AS count FROM(SELECT Entrada1 AS name, created_at as ts FROM ControleCaixa UNION ALL SELECT Entrada2 AS name, created_at as ts FROM ControleCaixa) x WHERE ts BETWEEN $start AND $end GROUP BY name", [1]);
+            } else {
+                $entrada_count = DB::select("SELECT name, COUNT(*) AS count FROM(SELECT Entrada1 AS name FROM ControleCaixa UNION ALL SELECT Entrada2 AS name FROM ControleCaixa) x GROUP BY name", [1]);
+            }
+
 
             //Get all users
             $acessos = Acesso::all();

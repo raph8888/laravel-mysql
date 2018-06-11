@@ -30,8 +30,14 @@ class ChartsSaidaCashierController extends Controller
         } else {
 
 
-            $saida_count = DB::select("SELECT name, COUNT(*) AS count FROM(SELECT Saida1 AS name FROM ControleCaixa UNION ALL SELECT Saida2 AS name FROM ControleCaixa) x GROUP BY name", [1]);
+            if(!empty($_GET['start']) && !empty($_GET['end'])){
+                $start = strtotime($_GET['start']);
+                $end = strtotime($_GET['end']);
 
+                $saida_count = DB::select("SELECT name, COUNT(*) AS count FROM(SELECT Saida1 AS name, created_at as ts FROM ControleCaixa UNION ALL SELECT Saida2 AS name, created_at as ts FROM ControleCaixa) x WHERE ts BETWEEN $start AND $end GROUP BY name", [1]);
+            } else {
+                $saida_count = DB::select("SELECT name, COUNT(*) AS count FROM(SELECT Saida1 AS name FROM ControleCaixa UNION ALL SELECT Saida2 AS name FROM ControleCaixa) x GROUP BY name", [1]);
+            }
 
             //Get all users
             $acessos = Acesso::all();
