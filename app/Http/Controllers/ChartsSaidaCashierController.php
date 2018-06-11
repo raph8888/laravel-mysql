@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use View;
 use DB;
 use App\Custos;
+use App\Acesso;
 use App\ControleCaixa;
 use Session;
 
@@ -31,9 +32,19 @@ class ChartsSaidaCashierController extends Controller
 
             $saida_count = DB::select("SELECT name, COUNT(*) AS count FROM(SELECT Saida1 AS name FROM ControleCaixa UNION ALL SELECT Saida2 AS name FROM ControleCaixa) x GROUP BY name", [1]);
 
+
+            //Get all users
+            $acessos = Acesso::all();
+
+            $names = array();
+
+            foreach ($acessos as $acesso){
+                array_push($names, $acesso->Nome);
+            }
+
             $saida_each_row = array();
             foreach ($saida_count as $saida) {
-                if ($saida->name != null && !empty($saida->name)) {
+                if ($saida->name != null && !empty($saida->name) && in_array(strtolower($saida->name), array_map('strtolower', $names))) {
                     array_push($saida_each_row, array('c' => array(array('v' => $saida->name, 'f' => null), array('v' => $saida->count, 'f' => null))));
                 }
             }
